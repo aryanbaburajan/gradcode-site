@@ -15,7 +15,7 @@
   "redirects": [
     {
       "source": "/releases/latest",
-      "destination": "https://github.com/aryanbaburajan/gradcode/releases/tag/gradcode-v0.1.0",
+      "destination": "https://github.com/aryanbaburajan/gradcode/releases/latest",
       "permanent": false
     }
   ]

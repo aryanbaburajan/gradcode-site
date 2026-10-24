@@ -15,7 +15,7 @@ const routes = {
 createServer(async (req, res) => {
   const path = new URL(req.url, 'http://localhost').pathname;
   if (path === '/releases/latest') {
-    res.writeHead(302, { Location: process.env.RELEASE_URL || 'https://github.com/aryanbaburajan/gradcode/releases/tag/gradcode-v0.1.0' });
+    res.writeHead(302, { Location: process.env.RELEASE_URL || 'https://github.com/aryanbaburajan/gradcode/releases/latest' });
     return res.end();
   }
   const route = routes[path];
