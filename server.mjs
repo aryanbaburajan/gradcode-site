@@ -8,6 +8,8 @@ const routes = {
   '/app.js': ['app.js', 'text/javascript; charset=utf-8'],
   '/install': ['install', 'text/plain; charset=utf-8'],
   '/favicon.svg': ['favicon.svg', 'image/svg+xml'],
+  '/benchmarks/landing-stat.json': ['benchmarks/landing-stat.json', 'application/json; charset=utf-8'],
+  '/benchmarks/results.json': ['benchmarks/results.json', 'application/json; charset=utf-8'],
 };
 
 createServer(async (req, res) => {
