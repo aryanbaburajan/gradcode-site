@@ -1,0 +1,49 @@
+#!/bin/sh
+set -eu
+
+version=0.1.0
+release="https://github.com/aryanbaburajan/gradcode/releases/download/v${version}"
+platform=linux
+arch=x64
+if [ "$(uname -s)" != Linux ] || { [ "$(uname -m)" != x86_64 ] && [ "$(uname -m)" != amd64 ]; }; then
+  printf 'Gradcode v%s currently supports Linux x64 only. Other binaries are not available yet.\n' "$version" >&2
+  exit 1
+fi
+if ! grep -qi '\bavx2\b' /proc/cpuinfo; then
+  printf 'This release requires an x64 CPU with AVX2 support.\n' >&2
+  exit 1
+fi
+if [ "$platform" = linux ] && ldd --version 2>&1 | grep -qi musl; then
+  printf 'This release needs glibc. Alpine/musl binaries are not available yet.\n' >&2
+  exit 1
+fi
+archive="gradcode-${platform}-${arch}.tar.gz"
+temporary=$(mktemp -d)
+destination=${GRADCODE_INSTALL_DIR:-"$HOME/.gradcode/bin"}
+stage="${destination}/.gradcode-install-$$"
+trap 'rm -rf "$temporary"; rm -f "$stage"' EXIT
+trap 'exit 1' HUP INT TERM
+
+printf 'Downloading Gradcode %s for %s/%s...\n' "$version" "$platform" "$arch"
+curl -fsSL --retry 3 "$release/$archive" -o "$temporary/$archive"
+curl -fsSL --retry 3 "$release/SHA256SUMS" -o "$temporary/SHA256SUMS"
+expected=$(awk -v file="$archive" '$2 == file {print $1}' "$temporary/SHA256SUMS")
+if [ -z "$expected" ]; then printf 'Release checksum missing.\n' >&2; exit 1; fi
+if command -v sha256sum >/dev/null 2>&1; then
+  actual=$(sha256sum "$temporary/$archive" | awk '{print $1}')
+elif command -v shasum >/dev/null 2>&1; then
+  actual=$(shasum -a 256 "$temporary/$archive" | awk '{print $1}')
+else
+  printf 'Install sha256sum or shasum to verify the download.\n' >&2; exit 1
+fi
+if [ "$actual" != "$expected" ]; then printf 'Checksum verification failed.\n' >&2; exit 1; fi
+tar -xzf "$temporary/$archive" -C "$temporary" gradcode
+mkdir -p "$destination"
+cp "$temporary/gradcode" "$stage"
+chmod 755 "$stage"
+mv -f "$stage" "$destination/gradcode"
+printf 'Installed Gradcode %s to %s/gradcode\n' "$version" "$destination"
+case ":$PATH:" in
+  *":$destination:"*) printf 'Run: gradcode\n' ;;
+  *) printf 'Add this directory to your PATH, then run gradcode:\n  export PATH="%s:$PATH"\n' "$destination" ;;
+esac

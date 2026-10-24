@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#141211">
+    <meta name="description" content="Gradcode is an AI coding agent for students. Built to use fewer tokens and work with your existing AI accounts.">
+    <title>Gradcode — The AI coding agent for students</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="site">
+      <header>
+        <a class="wordmark" href="/" aria-label="Gradcode home"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 7h22v14H3zM8 12l4 3-4 3m8 0h5"/></svg>gradcode<span>_</span></a>
+        <nav aria-label="Main navigation">
+          <a href="https://github.com/aryanbaburajan/gradcode">GitHub <span class="external">↗</span></a>
+          <a href="https://opencode.ai/docs/">Docs <span class="external">↗</span></a>
+          <a class="download" href="https://github.com/aryanbaburajan/gradcode/releases/tag/v0.1.0">Download <span aria-hidden="true">↓</span></a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="title">
+          <div class="eyebrow"><span class="status-dot"></span> BUILT FOR STUDENTS</div>
+          <h1 id="title">The AI coding agent<br>for your student budget.</h1>
+          <p class="intro">Build, debug, and learn with an agent designed to use fewer tokens.<br class="desktop-break"> Bring your API keys, free accounts, and Plus subscriptions.</p>
+
+          <div class="installer">
+            <div class="installer-header"><span class="active">curl</span><span class="terminal-label">TERMINAL</span></div>
+            <div class="command-row"><span class="prompt" aria-hidden="true">$</span><code id="install-command">curl -fsSL <span id="install-url">http://localhost:4173/install</span> | bash</code><button id="copy" aria-label="Copy install command" title="Copy install command"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="3" width="9" height="10" rx="1"/><path d="M12 13v4H3V7h4"/></svg></button></div>
+          </div>
+          <div class="install-note"><span>v0.1.0 · Linux x64 (glibc, AVX2)</span><span id="copy-status" role="status" aria-live="polite"></span></div>
+        </section>
+
+        <section class="features" aria-label="Why Gradcode">
+          <article><span class="feature-number">[01]</span><h2>Make every token count.</h2><p>Built with token efficiency in mind, so your budget goes further.</p></article>
+          <article><span class="feature-number">[02]</span><h2>Your accounts, together.</h2><p>Cycle between your API key sessions, free accounts, and Plus accounts.</p></article>
+          <article><span class="feature-number">[03]</span><h2>Built for the learning curve.</h2><p>From your first project to your final submission. A coding companion for student life.</p></article>
+        </section>
+      </main>
+
+      <footer><span>gradcode<span class="muted"> / </span>more building, less counting.</span><a href="https://opencode.ai/">Built on OpenCode <span aria-hidden="true">↗</span></a></footer>
+    </div>
+  </body>
+</html>
