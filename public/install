@@ -2,7 +2,7 @@
 set -eu
 
 version=0.1.0
-release="https://github.com/aryanbaburajan/gradcode/releases/download/v${version}"
+release="https://github.com/aryanbaburajan/gradcode/releases/download/gradcode-v${version}"
 platform=linux
 arch=x64
 if [ "$(uname -s)" != Linux ] || { [ "$(uname -m)" != x86_64 ] && [ "$(uname -m)" != amd64 ]; }; then

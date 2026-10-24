@@ -18,4 +18,4 @@ Run `npm run dev` and open http://localhost:4173.
 
 The copy button uses the deployed site's origin for the curl command. The installer downloads v0.1.0 from the Gradcode GitHub release, checks SHA-256, and installs to `~/.gradcode/bin`. The initial release supports Linux x64 with glibc and an AVX2-capable CPU. macOS, Windows, ARM, and musl builds are not available yet. Set `GRADCODE_INSTALL_DIR` to choose another directory.
 
-The Download button links directly to the v0.1.0 release. When publishing a new release, update the version in `public/install`, the Download URL and version note in `public/index.html`, and the compatibility redirect in `server.mjs`. Docs links to OpenCode's documentation.
+The Download button links directly to the `gradcode-v0.1.0` release tag, keeping Gradcode releases separate from inherited OpenCode tags. When publishing a new release, update the version in `public/install`, the Download URL and version note in `public/index.html`, and the compatibility redirect in `server.mjs`. Docs links to OpenCode's documentation.
