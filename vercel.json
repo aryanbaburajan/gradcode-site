@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/install",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/releases/latest",
+      "destination": "https://github.com/aryanbaburajan/gradcode/releases/tag/gradcode-v0.1.0",
+      "permanent": false
+    }
+  ]
+}

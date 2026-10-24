@@ -8,6 +8,8 @@ Minimal standalone landing page for [Gradcode](https://github.com/aryanbaburajan
 - Output directory: `dist`
 - No dependencies to install. Node 20+.
 
+Vercel reads `vercel.json` to use the Other framework preset and serve `dist/` as static files. The Node server is for local development or Node hosts; it is not a Vercel Function. The configuration also sets the installer content type and release redirect.
+
 The output is a static site suitable for Cloudflare Pages, Netlify, or any static host. `_headers` sets the extensionless `/install` file to plain text on hosts supporting that convention. On other hosts, configure `/install` to be served as plain text without an HTML fallback. Deploy at the domain root.
 
 For a Node host, use `npm start`; it listens on `PORT` (default 4173).
